@@ -20,17 +20,11 @@ def on_channel_open(new_channel):
     global channel
     channel = new_channel
 
-    channel.queue_declare(queue="my_queue_name", 
-						  durable=True, 
-						  exclusive=False, 
-						  auto_delete=False, 
-						  callback=on_queue_declared)
+    channel.queue_declare(queue="my_queue_name", durable=True, exclusive=False, auto_delete=False, callback=on_queue_declared)
 
 def on_queue_declared(frame):
     """Once rabbitmq has told us our queue was declared, set the consumer handler name and queue"""
-	channel.basic_consume(receive_message,
-                  		  queue='my_queue_name',
-                          no_ack=True)
+	channel.basic_consume(receive_message, queue='my_queue_name', no_ack=True)
 
 try:
 	#get the name of the logger in my configuration
