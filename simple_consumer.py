@@ -30,9 +30,6 @@ try:
 	#get the name of the logger in my configuration
 	logger = logging.getLogger('logger_name')
 
-	#get the handler for my logger so it knows where to write to 
-	iHndlr = logger.handlers[0]
-
 	#set credentials for rabbitmq-server
 	credentials = pika.PlainCredentials('rabbit_username','rabbit_password')
 
