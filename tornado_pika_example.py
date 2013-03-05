@@ -66,7 +66,7 @@ class MainHandler(tornado.web.RequestHandler):
 
 			channel.basic_publish(exchange='', routing_key='my_queue_name', properties=pika.BasicProperties(content_type='application/text'), body=rcv_message)
 		except Exception as e:
-			logger.error(e)	
+			logger.error('Something went wrong... %s', e)	
 
 application = Application()
 
