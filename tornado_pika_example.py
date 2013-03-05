@@ -12,6 +12,8 @@ RMQ_PWD = 'password'
 RMQ_HOST = 'localhost'
 RMQ_PORT = 5762
 
+IOLOOP_TIMEOUT = 500
+
 #configure my logger
 logging.config.fileConfig('log.conf')
 
@@ -77,6 +79,6 @@ if __name__ == "__main__":
 
 	ioloop = tornado.ioloop.IOLoop.instance()
 
-	ioloop.add_timeout(500, application.pika.connect)
+	ioloop.add_timeout(IOLOOP_TIMEOUT, application.pika.connect)
 
 	ioloop.start()
